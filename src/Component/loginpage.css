@@ -48,3 +48,46 @@ label{
       border: red !important;
   }
   
+
+
+
+
+/* --------------xx-----------xx---------On hover left Drawer Open ---------------xx------------xx---------*/
+
+
+.makeStyles-drawerClose-8:hover{
+    width:240px !important
+}
+
+
+  .SpinSetting{
+    background-color:#f7b924;
+    border-radius: 50px;
+    padding: 8px;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    color:#212529;
+    cursor: pointer;
+  }
+
+.SpinSetting1{
+    margin: auto;
+  
+    animation: settingrotate 2s infinite linear;
+}
+
+
+@keyframes settingrotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+
+
+  .fa-rocket{
+    transform:rotate(-44deg)
+  }

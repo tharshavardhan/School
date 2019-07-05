@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import DashBoard_RightDrawer from './DashBoard_RightDrawer'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -18,7 +19,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom'
-import {MenuItem} from '@material-ui/core'
+import { MenuItem, MenuList } from '@material-ui/core'
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 
 const drawerWidth = 240;
@@ -82,21 +86,29 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         padding: theme.spacing(3),
     },
+    nested: {
+        paddingLeft: theme.spacing(5),
+    },
+    expandlessAndExpandMore:{
+        marginLeft: '120px',
+    }
+ 
 }));
 
 export default function DashBoard(props) {
     return (
         <Router>
             <DashBoard1>
-            <Switch>
-            <Route exact path="/dashboard"  render={
-              () => <div> First page</div> } />
+            <DashBoard_RightDrawer/>
+                <Switch>
+                    <Route exact path="/dashboard" render={
+                        () => <span> First page</span>} />
 
-            <Route path="/dashboard/2" render={
-              () => <div> second page </div> } />
+                    <Route path="/dashboard/2" render={
+                        () => <span> second page </span>} />
 
-            <Route render={() => <h3>Not Found</h3>} />
-          </Switch>
+                    <Route render={() => <h3>Not Found</h3>} />
+                </Switch>
             </DashBoard1>
         </Router>
     )
@@ -111,6 +123,7 @@ export function DashBoard1(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
+    const [openTest,setOpenTest] = React.useState(false);
 
     function handleDrawerOpen() {
         setOpen(true);
@@ -118,6 +131,10 @@ export function DashBoard1(props) {
 
     function handleDrawerClose() {
         setOpen(false);
+    }
+
+    function handleClick() {
+        setOpenTest(!openTest)
     }
     console.log(props)
     return (
@@ -168,7 +185,7 @@ export function DashBoard1(props) {
                 <Divider />
                 <List>
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem component={Link} to="/dashboard"  button key={text}>
+                        <ListItem component={Link} to="/dashboard" button key={text}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
@@ -182,8 +199,32 @@ export function DashBoard1(props) {
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
+                
+                <MenuItem component={Link} to="/dashboard/2" selected={'/dashboard/2' === "/dashboard/2"} >home</MenuItem>
+                <MenuItem button onClick={handleClick}>
+                          hai
+                            
+                            {openTest ? <ExpandLess className={classes.expandlessAndExpandMore} /> : 
+                            <ExpandMore className={classes.expandlessAndExpandMore}/>}
+                        </MenuItem>
+                        <Collapse in={openTest} timeout="auto" unmountOnExit style={{backgroundColor:"lightblue"}}>
+                            <MenuItem component="div" className={classes.nested}>
+                              bye
+                            </MenuItem>
+                            <MenuItem component="div" className={classes.nested}>
+                              bye
+                            </MenuItem>
+                            <MenuItem component="div" className={classes.nested}>
+                              bye
+                            </MenuItem>
+                            <MenuItem component="div" className={classes.nested}>
+                              bye
+                            </MenuItem>
+                        </Collapse>
+
+                <MenuItem component={Link} to="/dashboard/2"  >home</MenuItem>
+
                 </List>
-                 <MenuItem component={Link} to="/dashboard/2" selected={'/dashboard/2' === "/dashboard/2"} >home</MenuItem>
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
@@ -199,11 +240,65 @@ export function DashBoard1(props) {
                     arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
                     donec massa sapien faucibus et molestie ac.
         </Typography>
-                <Typography paragraph>
-                {props.children}
+        <Typography paragraph>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
+                    facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+                    gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
+                    donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+                    Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
+                    imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
+                    arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
+                    donec massa sapien faucibus et molestie ac.
         </Typography>
-                     
+        <Typography paragraph>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
+                    facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+                    gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
+                    donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+                    Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
+                    imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
+                    arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
+                    donec massa sapien faucibus et molestie ac.
+        </Typography>
+        <Typography paragraph>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
+                    facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+                    gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
+                    donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+                    Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
+                    imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
+                    arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
+                    donec massa sapien faucibus et molestie ac.
+        </Typography>
+        <Typography paragraph>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
+                    facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
+                    gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
+                    donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
+                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
+                    Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
+                    imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
+                    arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
+                    donec massa sapien faucibus et molestie ac.
+        </Typography>
+                <div >
+                    {props.children}
+
+
+
+                </div>
+                
+                <i className="fa fa-rocket fa-lg" aria-hidden="true"></i>
+              
             </main>
         </div>
+        
     );
 }
