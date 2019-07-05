@@ -1,0 +1,50 @@
+.LoginPage{
+    background-color:#fff;;
+    padding: 50px;
+    width: 37%;
+    margin: auto;
+    text-align: center
+}
+
+.bg{
+    background-color:#3d454d;;
+    padding-top: 30px;
+}
+
+
+.form-control1{
+    background-color: #f0f6f7 !important;
+}
+
+
+label{
+    margin-bottom: 2px !important;
+}
+
+
+.change_password{
+    margin-top: 130px;
+    color:#3ea0d1 !important;
+}
+
+.change_password:hover {
+    color: #3ea0d1;
+    text-decoration: underline;
+}
+
+::placeholder {
+    color: #929aa1 !important;
+   font-size: 14px;
+   font-style: italic;
+  }
+  
+
+  input.input.form-control:focus{
+      border: 1px solid #3ea0d1 !important
+  }
+
+
+  .form_name1{
+      border: red !important;
+  }
+  
