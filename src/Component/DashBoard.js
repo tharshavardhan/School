@@ -23,15 +23,23 @@ import { MenuItem, MenuList } from '@material-ui/core'
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import InputBase from '@material-ui/core/InputBase';
+
+import SearchIcon from '@material-ui/icons/Search';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
+    title: {
+        flexGrow: 1
+      },
     root: {
         display: 'flex',
     },
     appBar: {
+        
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
@@ -39,12 +47,7 @@ const useStyles = makeStyles(theme => ({
         }),
     },
     appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
+   
     },
     menuButton: {
         marginRight: 36,
@@ -76,6 +79,7 @@ const useStyles = makeStyles(theme => ({
         },
     },
     toolbar: {
+        backgroundColor:"fafbfc",
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-end',
@@ -91,7 +95,43 @@ const useStyles = makeStyles(theme => ({
     },
     expandlessAndExpandMore:{
         marginLeft: '120px',
-    }
+    },
+    search: {
+        
+        position: 'relative',
+        
+        borderRadius: "60px",
+        backgroundColor: "#eeeeef",
+        '&:hover': {
+          backgroundColor: "#eeeeef",
+        },
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+          marginLeft: theme.spacing(1),
+          width: 'auto',
+        },
+      },
+      searchIcon: {
+        width: theme.spacing(7),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      inputInput: {
+        padding: theme.spacing(1, 1, 1, 7),
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+          width: 120,
+          '&:focus': {
+            width: 200,
+          },
+        },
+      },
  
 }));
 
@@ -147,20 +187,61 @@ export function DashBoard1(props) {
                 })}
             >
                 <Toolbar>
-                    <IconButton
+                    {open == true ?
+                    <div >
+                    <IconButton onClick={handleDrawerClose}
+                    color="inherit"
+                    edge="start"
+                    className={clsx(classes.menuButton)}
+                    style={{outline:"none"}}
+                    >
+                         <ChevronLeftIcon />
+                    </IconButton>
+                </div>:
+                <IconButton
                         color="inherit"
                         aria-label="Open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
+                        style={{outline:"none"}}
                         className={clsx(classes.menuButton, {
                             [classes.hide]: open,
                         })}
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Mini variant drawer
+                
+                }
+                 <Typography variant="h6" className={classes.title}>
+            Photos
           </Typography>
+             <div className={classes.search}>
+            <div className={classes.searchIcon}>
+              <SearchIcon />
+            </div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'Search' }}
+            />
+          </div>  
+
+          <div>
+              <IconButton
+                aria-label="Account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </div>
+                      
+                    
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -296,7 +377,8 @@ export function DashBoard1(props) {
                 </div>
                 
                 <i className="fa fa-rocket fa-lg" aria-hidden="true"></i>
-              
+                
+                
             </main>
         </div>
         

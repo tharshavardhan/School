@@ -55,10 +55,17 @@ label{
 /* --------------xx-----------xx---------On hover left Drawer Open ---------------xx------------xx---------*/
 
 
-.makeStyles-drawerClose-8:hover{
+.makeStyles-drawerClose-9:hover{
     width:240px !important
 }
 
+.makeStyles-drawerOpen-8{
+  box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.14);
+}
+
+.makeStyles-drawerClose-9{
+  box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.14);
+}
 
   .SpinSetting{
     background-color:#f7b924;
@@ -90,4 +97,9 @@ label{
 
   .fa-rocket{
     transform:rotate(-44deg)
+  }
+
+  .MuiAppBar-colorPrimary {
+    color :#535bd8 !important;
+    background-color: #fafbfc !important;
   }
