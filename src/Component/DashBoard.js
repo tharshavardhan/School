@@ -39,7 +39,8 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
     },
     appBar: {
-        
+        backgroundColor:   "#fafbfc",
+        color:"#535bd8",
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
@@ -186,7 +187,7 @@ export function DashBoard1(props) {
                     [classes.appBarShift]: open,
                 })}
             >
-                <Toolbar>
+                <Toolbar >
                     {open == true ?
                     <div >
                     <IconButton onClick={handleDrawerClose}
@@ -263,14 +264,25 @@ export function DashBoard1(props) {
                         {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
                     </IconButton>
                 </div>
-                <Divider />
+                
                 <List>
+                <div className="testing">
+                    <ListItem button className="testing1">
+                     
+                        <ListItemIcon> <InboxIcon /></ListItemIcon>
+                    <ListItemText primary={"Home"} />
+                        
+                  
+                    </ListItem> 
+                </div>
+                <div className="testing">
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem component={Link} to="/dashboard" button key={text}>
+                        <ListItem component={Link} to="/dashboard" button key={text} className="testing1">
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
+                </div>
                 </List>
                 <Divider />
                 <List>
@@ -303,7 +315,7 @@ export function DashBoard1(props) {
                             </MenuItem>
                         </Collapse>
 
-                <MenuItem component={Link} to="/dashboard/2"  >home</MenuItem>
+               
 
                 </List>
             </Drawer>
