@@ -7,7 +7,8 @@
 }
 
 .bg{
-    background-color:#3d454d;;
+    /* background-color:#3d454d; */
+    background: linear-gradient(#4CA1AF,#C4E0E5) ;
     padding-top: 30px;
 }
 
@@ -81,7 +82,6 @@ label{
 
 .SpinSetting1{
     margin: auto;
-  
     animation: settingrotate 2s infinite linear;
 }
 
@@ -107,16 +107,60 @@ label{
 
 
   .testing{
-   padding: 10px
+   margin: 9px;
+   padding: 0px !important;
   }
   
   .testing .testing1:hover{
-    background-color: #e0f3ff;
+    background-color: #e0f3ff !important;
     opacity: 1
   }
   .testing .testing1{
-    padding: 5px !important;
-    border-radius: 5px;
     
-    opacity: 0.6;
+    border-radius: 5px;
+    max-height: 31px !important;
+    opacity: 0.7;
   }
+  .testing .Heading{
+    
+    border-radius: 5px;
+    max-height: 99px !important;
+    opacity: 0.7;
+  }
+  .testing .Heading:hover{
+    background-color: #e0f3ff !important;
+   
+    opacity: 1
+  }
+
+
+  .Mui-selected{
+    font-weight: bold !important;
+    background-color: #e0f3ff !important
+  }
+
+  .MuiListItemText-root{
+     margin-top: 0px !important; 
+    margin-bottom: 2px !important; 
+    padding: 10px !important;
+    text-indent: 12px;
+  }
+
+  .MuiListItem-root{
+    padding: 6px 12px  !important;
+    margin: 0 0 3px !important;
+  }
+  .MuiCollapse-wrapperInner {
+    width: 100%;
+    padding-left: 10px !important;
+}
+
+.MuiMenuItem-root{
+  min-height: 10px !important;
+  line-height: 2 !important;
+  border-radius: 10px !important 
+}
+
+..MuiMenuItem-root:hover{
+  background-color: #e0f3ff!important;
+}
