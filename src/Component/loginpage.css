@@ -164,3 +164,88 @@ label{
 ..MuiMenuItem-root:hover{
   background-color: #e0f3ff!important;
 }
+
+
+.slide-enter {
+  transform: rotateY(180deg);
+ }
+ 
+ .slide-enter-active {
+   animation: slide-in 300ms ease-out forwards;
+ }
+ 
+ .slide-leave {
+   transform: translateX(0deg);
+  }
+  
+  .slide-leave-active {
+    animation: slide-out 300ms ease-out forwards;
+  }
+ 
+ @keyframes slide-in{
+   from{
+     transform: rotateY(180deg)
+   }
+   to{
+     transform: rotateY(0deg)
+   }
+ }
+ 
+ @keyframes slide-out{
+   from{
+     transform: translateX(0%)
+   }
+   to{
+     transform: translateX(100%)
+   }
+ }
+ 
+ 
+ 
+ .slide-appear{
+   opacity: 0;
+ }
+ 
+ .slide-appear-active{
+   opacity: 1;
+   transition: opacity 1000ms ease-in;
+ }
+ 
+ 
+ 
+ 
+ .MuiTabs-flexContainer .tab1.Mui-selected{
+   background:#525ad6 !important;
+   border-radius: 5px !important;
+   color :white;
+   animation: tab1 .3s linear;
+ 
+ }
+ 
+ .MuiTabs-flexContainer .tab2.Mui-selected{
+   background:#525ad6 !important;
+   border-radius: 5px !important;
+   color :white;
+   animation: tab2 .3s linear;
+ 
+ }
+ 
+ 
+ @keyframes tab1 {
+   0%   {transform: translateX(70%)}
+   25%  {transform: translateX(40%)}
+   50%  {transform: translateX(10%)}
+   75%  {transform: translateX(-10%)}
+   100% {transform: translateX(0%)}
+ }
+ @keyframes tab2 {
+   0%   {transform: translateX(-70%)}
+   25%  {transform: translateX(-40%)}
+   50%  {transform: translateX(-10%)}
+   75%  {transform: translateX(+10%)}
+   100% {transform: translateX(0%)}
+ }
+ 
+ 
+ 
+ 

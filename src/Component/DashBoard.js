@@ -8,30 +8,30 @@ import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
+
 import { BrowserRouter as Router, Route, Link, Redirect, Switch } from 'react-router-dom'
 import { MenuItem, MenuList } from '@material-ui/core'
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import InputBase from '@material-ui/core/InputBase';
-import {compose} from 'recompose'
+
 import { withRouter } from "react-router";
-import { withStyles } from '@material-ui/core/styles';
+
 
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Icon from '@material-ui/core/Icon';
-import FirstPage,{SecondPage,ThirdPage,FourthPage} from './Components'
+import FirstPage, { SecondPage, ThirdPage, FourthPage } from './Components'
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -139,35 +139,35 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
- function DashBoard(props) {
-console.log("inside dashboard" , props)
+function DashBoard(props) {
+    console.log("inside dashboard", props)
     return (
         <Router>
-            
+
             <DashBoard1 {...props} >
                 <DashBoard_RightDrawer />
                 <Switch>
                     <Route exact path="/dashboard" render={
-                     (props) => <FirstPage  {...props} />}/>
-                        <Route path="/dashboard/1" render={
-                     (props) => <SecondPage   />} />
-                        <Route path="/dashboard/2" render={
-                     (props) => <ThirdPage   />} />
+                        (props) => <FirstPage  {...props} />} />
+                    <Route path="/dashboard/1" render={
+                        (props) => <SecondPage />} />
+                    <Route path="/dashboard/2" render={
+                        (props) => <ThirdPage />} />
 
                     <Route path="/dashboard/3" render={
-                     (props) => <FourthPage {...props}  />} />
+                        (props) => <FourthPage {...props} />} />
 
                     <Route render={() => <h3>Not Found</h3>} />
                 </Switch>
             </DashBoard1>
         </Router>
     )
-} 
-export default  withRouter(DashBoard)
+}
+export default withRouter(DashBoard)
 
 
 
- function DashBoard1(props) {
+function DashBoard1(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -185,18 +185,18 @@ export default  withRouter(DashBoard)
     function handleClick() {
         setOpenTest(!openTest)
     }
-    function testing(){
-        setTest(()=>test+1)
+    function testing() {
+        setTest(() => test + 1)
     }
-    console.log("href",window.location.href)
+    console.log("href", window.location.href)
     const win = window.location.href.split("/")
-    var location=""
-    win.map((t,index)=>{
-        if(index>2)
-        location=location+"/"+t;
+    var location = ""
+    win.map((t, index) => {
+        if (index > 2)
+            location = location + "/" + t;
     })
-    console.log("location ",location)
-   
+    console.log("location ", location)
+
     const pathname = "";
     return (
         <div className={classes.root}>
@@ -286,27 +286,15 @@ export default  withRouter(DashBoard)
                 </div>
                 <MenuList>
                     <MenuItem onClick={testing} button component={Link} to='/dashboard' selected={'/dashboard' === location}>Test</MenuItem>
-                    <MenuItem onClick={testing} button component={Link} to="/dashboard/1" selected={'/dashboard/1' === location}>
-                        home
-                    </MenuItem>
-                </MenuList>
-                 <List>
 
-                    <div className="testing">
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem component={Link} to="/dashboard" button key={text} className="testing1">
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItem>
-                        ))}
-                    </div>
-                </List> 
+                </MenuList>
+
                 {/* <Divider /> */}
 
 
 
                 {/* checkingg */}
-                 <List>
+                <List>
 
 
                     <MenuItem component={Link} to="/dashboard"
@@ -325,10 +313,10 @@ export default  withRouter(DashBoard)
                         <Collapse in={openTest} timeout="auto" unmountOnExit style={{ borderLeft: "3px solid #e0f3ff", marginLeft: "22px" }}>
                             {['1', '2', '3', '4'].map((text, index) => (
                                 <ListItem onClick={testing}
-                                 selected={location == `/dashboard/${text}`} component={Link} to={`/dashboard/${text}`} button key={text}
-                                
-                                className={classes.nested} className="testing1">
-                                    <ListItemText primary={text}/>
+                                    selected={location == `/dashboard/${text}`} component={Link} to={`/dashboard/${text}`} button key={text}
+
+                                    className={classes.nested} className="testing1">
+                                    <ListItemText primary={text} />
                                 </ListItem>
                             ))}
 
@@ -337,34 +325,22 @@ export default  withRouter(DashBoard)
                     </div>
 
 
-                </List> 
-                
+                </List>
+
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-                    gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-                    Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-                    imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-                    arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-                    donec massa sapien faucibus et molestie ac.
-        </Typography>
-        <MenuList>
-                    <MenuItem component={Link} to='/test' >dsfdsfdsfsdfsdfdsfdsfdsfs</MenuItem>
-                </MenuList>
+
                 <div >
+
+
                     {props.children}
 
 
 
                 </div>
 
-                <i className="fa fa-rocket fa-lg" aria-hidden="true"></i>
+               
 
 
             </main>
