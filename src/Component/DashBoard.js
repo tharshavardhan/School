@@ -301,7 +301,7 @@ function DashBoard1(props) {
 
                         selected={"props.location.pathname" == "/dashboard"} >Home</MenuItem>
 
-                    <div className="testing">
+                    <div className="Drawer_item">
                         <MenuItem button onClick={handleClick} className=" Heading">
                             <Icon className={'fa fa-home'} /><span className={classes.nested}
                                 style={{ fontWeight: "700" }}
@@ -315,7 +315,7 @@ function DashBoard1(props) {
                                 <ListItem onClick={testing}
                                     selected={location == `/dashboard/${text}`} component={Link} to={`/dashboard/${text}`} button key={text}
 
-                                    className={classes.nested} className="testing1">
+                                    className={classes.nested} className="Drawer_subitem">
                                     <ListItemText primary={text} />
                                 </ListItem>
                             ))}

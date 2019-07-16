@@ -1,7 +1,7 @@
 
 
 
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,6 +9,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import CurveImage from '../CurveImage.png'
 
 
 interface TabContainerProps {
@@ -39,15 +40,15 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function FirstPage() {
     const classes = useStyles();
     const [value, setValue] = React.useState('one');
-    const [trans,settrans] = React.useState("transform: translate3d(0px, 0px, 0px);");
+    const [trans, settrans] = React.useState("transform: translate3d(0px, 0px, 0px);");
 
     function handleChange(event: React.ChangeEvent<{}>, newValue: string) {
         setValue(newValue);
-        console.log(newValue)
-        if(newValue == "one"){
+
+        if (newValue == "one") {
             settrans("translateX(70%)")
         }
-        else{
+        else {
             settrans("translateX(20%)")
 
         }
@@ -61,10 +62,10 @@ export default function FirstPage() {
                 transitionLeaveTimeout={300}
                 transitionAppear={true}
                 transitionAppearTimeout={1000}>
-                <Tabs value={value} onChange={handleChange} indicatorColor={"none"}>
-                    <Tab id="tab_1" value="one" label="Item One" wrapped 
-                    style={{ margin: "10px",outline:"none"}} className="tab1" />
-                    <Tab id="tab_2" value="two" label="Item Two" wrapped style={{ margin: "10px",outline:"none"}} className="tab2" />
+                <Tabs value={value} onChange={handleChange} indicatorColor={"primary"}>
+                    <Tab id="tab_1" value="one" label="Item One" wrapped
+                        style={{ margin: "10px", outline: "none", maxWidth: "10px" }} className="tab1" />
+                    <Tab id="tab_2" value="two" label="Item Two" wrapped style={{ margin: "10px", outline: "none" }} className="tab2" />
                 </Tabs>
             </ReactCSSTransitionGroup>
             <div>
@@ -74,7 +75,7 @@ export default function FirstPage() {
             {value === 'three' && <TabContainer>Item Three</TabContainer>}
 
 
-  
+
         </div>
     );
 }
@@ -105,16 +106,22 @@ export default function FirstPage() {
 
 
 
-export  class SecondPage extends Component {
+export class SecondPage extends Component {
     render() {
         return (
             <div>
-                2
+                <div className="parent">
+                    <img src={CurveImage} className="child" />
+                    {/* <img src={png} className="child"/> */}
+                </div>
             </div>
         )
     }
 }
-export  class ThirdPage extends Component {
+
+
+
+export class ThirdPage extends Component {
     render() {
         return (
             <div>
@@ -123,7 +130,7 @@ export  class ThirdPage extends Component {
         )
     }
 }
-export  class FourthPage extends Component {
+export class FourthPage extends Component {
     render() {
         return (
             <div>
